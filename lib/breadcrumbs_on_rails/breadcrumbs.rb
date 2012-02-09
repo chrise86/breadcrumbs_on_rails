@@ -82,12 +82,12 @@ module BreadcrumbsOnRails
 
       def render
         @elements.collect do |element|
-          render_element(element, @options[:separator] || " &raquo; ")
+          render_element(element)
         end
       end
 
       def render_element(element)
-        content = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options)
+        content = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options).join(@options[:separator] || " &raquo; ")
         if @options[:tag]
           @context.content_tag(@options[:tag], content)
         else
