@@ -82,7 +82,7 @@ module BreadcrumbsOnRails
 
       def render
         @elements.collect do |element|
-          render_element(element + (@options[:separator] || " &raquo; "))
+          render_element(element, @options[:separator] || " &raquo; ")
         end
       end
 
